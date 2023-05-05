@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css"> <!-- HÄMTA CSS-fil -->
+    <title>Document</title>
+</head>
+<body>
+
+    <h1 class="intro">Sök</h1>
+    <input id="keyword" type="text" />
+    <button id="search">Sök författare</button>
+    <button id="type">Sök titel</button>
+
+    <script>
+        const btnSearch = document.querySelector('#search');
+        const searchTitle = document.querySelector('#type');
+
+        searchTitle.addEventListener('click', () => {
+            printResults('title');
+        })
+
+
+        btnSearch.addEventListener('click', () => {
+
+            printResults();
+        });
+
+        async function printResults(type) {
+
+            const body = document.querySelector('body');
+
+            let data = await getResultsByKeyword(type);
+
+            for (const customer of data) {
+
+                let p = document.createElement('p');
+
+                p.style.color = '#F2E5BD'
+
+                p.innerText ='TITLE: ' + customer.firstName + ' FÖRFATTARE: ' + customer.email + ' ANTAL UTLÅNADE: ' + customer.loaned + ' TILLGÄNGLIGA:' + customer.available;
+
+                body.appendChild(p);
+            }
+        }
+
+        async function getResultsByKeyword(type) {
+
+            let keyword = document.querySelector('#keyword').value;
+
+            const options = {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }}
+
+            let response = await fetch('http://localhost:3001/customer/search?' + new URLSearchParams({
+                keyword: keyword,
+                type: type
+            }), options)
+            .catch(error => {
+                console.error(error);
+            });
+
+
+            let data = await response.json();
+
+            console.log(data)
+
+            return data;
+        };
+
+    </script>
+</body>
+</html>

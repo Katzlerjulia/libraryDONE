@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radera en bok</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- HÄMTA CSS-fil -->
+</head>
+<body>
+    <h1 class="intro">Radera en bok</h1>
+
+    <label for="customerId">Id</label>
+    <input id="customerId" type="text" name="customerId" autofocus/>
+
+    <br>
+<br>
+    <button id="btnDelete" class="button-delete" type="submit">Radera</button>
+
+    <script>
+
+        var btnDelete = document.querySelector('#btnDelete')
+        let customerId = document.querySelector('#customerId')
+
+        btnDelete.addEventListener('click', () => {
+
+            const options = {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ customerId: customerId.value })
+            };
+            fetch('http://localhost:3001/customer/remove', options)
+            .then(response => console.log(response))
+            .catch(error => {
+                console.error(error);
+            });
+        });
+</script>
+</body>
+</html>

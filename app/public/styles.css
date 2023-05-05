@@ -1,0 +1,85 @@
+/* dark green: #0F2626
+   light green: #2C3E40
+   dark purple: #735563
+   light pink: #D9C5D0
+   beige: #BF9A84 */
+
+html {
+    font-family: Arial, sans-serif;
+    background-color: #F2E5BD;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+}
+
+
+
+.intro {
+    color: #F2E5BD;
+}
+
+.navmenu a {
+   color: #F2E5BD;
+text-decoration: none;}
+
+.navmenu a:hover {
+    color: #148AF8;
+
+}
+
+.bgimage img {
+  /* Anpassa bildens bredd till elementets bredd */
+  width: 100%;
+  height: auto;
+}
+
+.message-box {
+    background-color:#F2E5BD;
+    height:200px;
+    width: 600px;
+    padding: 10px;
+    overflow-y: scroll;
+    border-radius:5px;
+}
+
+.message {
+    background-color:#F2C777;
+    height:50px;
+    width: 500px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.input-controller {
+    margin: 10px 10px 10px 0px;
+}
+
+input {
+    height: 36px;
+    width: 500px;
+    border-radius: 7px;
+    border: none;
+    background-color: #F2C777;
+
+}
+
+button {
+    height: 36px;
+    width: 108px;
+    background-color: #F2C777;
+    color: white;
+    border-radius: 7px;
+    border: none;
+    color: #000000;
+}
+
+label {
+    color: #D9C5D0;
+}
+
+
+.addBookInput4, .addBookInput3, .addBookInput2, .addBookInput {
+    margin-left: 4em;
+    margin-bottom: 2em;
+}
